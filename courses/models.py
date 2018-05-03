@@ -17,3 +17,11 @@ class Course(models.Model):
             return True
         else:
             return False
+
+class Student():
+    def approval_percentaje(self,score,scale):
+        try:
+            percentaje = (score*100)/scale
+            return percentaje
+        except Exception, error:
+            return error
