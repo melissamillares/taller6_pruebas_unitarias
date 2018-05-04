@@ -23,3 +23,31 @@ class TestViews:
 		request.user = AnonymousUser()
 		response = course_list(request)
 		assert 'accounts/login' in response.url
+
+	def test_course_detail_course(self):
+		path = reverse('courses:detail',args=[1])
+
+	
+	def test_course_delete_without_object_course(self):
+		c = Client()
+		path = reverse('courses:delete', args=[1])
+		response = c.get(path)
+		assert response.status_code == 404
+
+	def test_course_delete_object_course_confirm_message(self):
+		course = mixer.blend('courses.Course',pk=1,name='prueba')
+		c = Client()
+		path = reverse('courses:delete',args=[1])
+		response = c.get(path)
+		message  = 'seguro que deseas borrar el curso ' + '"' + course.name + '"' 
+		url = 'courses/borrar/' + str(course.pk)
+		assert message in response.content
+		assert url in response.request['PATH_INFO']
+
+	def test_course_delete_object_course(self):
+		mixer.blend('courses.Course',pk=1)
+		c=Client()
+		path=reverse('courses:delete',args=[1])
+		response=c.post(path)
+		assert 'courses' in response.url
+		assert response.status_code == 302

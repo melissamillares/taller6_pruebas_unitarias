@@ -1,0 +1,5 @@
+[run]
+omit = */unit_test/*
+        */ambiente_pruebas/*
+        */tests/*
+        */migrations/*

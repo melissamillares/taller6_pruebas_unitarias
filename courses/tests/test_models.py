@@ -15,10 +15,18 @@ class TestModels:
 		start_date = make_aware(datetime.strptime("2018-01-01", "%Y-%m-%d"))
 		end_date = make_aware(datetime.strptime("2018-12-12", "%Y-%m-%d"))
 		#Simulamos un objeto de tipo Course
-		course = mixer.blend('courses.Course', start_date=start_date, end_date
-		= end_date)
+		course = mixer.blend('courses.Course', start_date=start_date, end_date = end_date)
 		#Validamos que el test sea correcto
 		assert course.is_available == True
+	
+	def test_course_is_not_available(self):
+		#definimos un objeto tipo datetime a partir de una fecha en string
+		start_date = make_aware(datetime.strptime("2017-01-01", "%Y-%m-%d"))
+		end_date = make_aware(datetime.strptime("2017-12-12", "%Y-%m-%d"))
+		#Simulamos un objeto de tipo Course
+		course = mixer.blend('courses.Course', start_date=start_date, end_date = end_date)
+		#Validamos que el test sea correcto
+		assert course.is_available == False
 
 	def test_calculate_approval_percentaje(self):
 		student = Student()
