@@ -26,6 +26,7 @@ class TestViews:
 
 	def test_course_detail_course(self):
 		path = reverse('courses:detail',args=[1])
+		
 
 	
 	def test_course_delete_without_object_course(self):
