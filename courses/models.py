@@ -18,6 +18,12 @@ class Course(models.Model):
         else:
             return False
 
+    def approved_course(self, student):
+        if student.approval_percentaje >= 90:
+            return "El estudiante aprobo el curso"
+        else:
+            return "El estudiante no aprobo el curso"
+
 class Student():
     def approval_percentaje(self,score,scale):
         try:
@@ -25,3 +31,9 @@ class Student():
             return percentaje
         except Exception, error:
             return error
+
+    def student_registration(self, course):
+        if course.is_available:
+            return "Estudiante puede matricularse"
+        else:
+            return "Estudiante no se puede matricular"

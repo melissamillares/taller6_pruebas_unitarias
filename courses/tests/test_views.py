@@ -26,6 +26,10 @@ class TestViews:
 
 	def test_course_detail_course(self):
 		path = reverse('courses:detail',args=[1])
+		request = RequestFactory().get(path)
+		request.user = AnonymousUser()
+		response = course_detail(request,1)
+		assert response.status_code == 200	
 		
 
 	
