@@ -8,5 +8,9 @@
   "courses/tests/test_urls.py::TestUrls::()::test_edit_url", 
   "courses/tests/test_urls.py::TestUrls::()::test_delete_url", 
   "courses/tests/test_views.py::TestViews::()::test_course_list_authenticated", 
-  "courses/tests/test_views.py::TestViews::()::test_course_list_unauthenticated"
+  "courses/tests/test_views.py::TestViews::()::test_course_list_unauthenticated", 
+  "courses/tests/test_views.py::TestViews::()::test_course_detail_course", 
+  "courses/tests/test_views.py::TestViews::()::test_course_delete_without_object_course", 
+  "courses/tests/test_views.py::TestViews::()::test_course_delete_object_course_confirm_message", 
+  "courses/tests/test_views.py::TestViews::()::test_course_delete_object_course"
 ]
